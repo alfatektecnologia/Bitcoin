@@ -19,6 +19,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import br.com.alfatek.coinexplorer.presentation.BlockchainInfoScreen
 import br.com.alfatek.coinexplorer.presentation.MainViewModel
 import br.com.alfatek.coinexplorer.ui.theme.CoinExplorerTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,24 +35,26 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             CoinExplorerTheme {
-                val blockchainInfo by viewModel.info.observeAsState()
 
-//                LaunchedEffect(Unit) {
-//                    viewModel.fetchBlockchainInfo()
+                BlockchainInfoScreen()
+//                val blockchainInfo by viewModel.info.observeAsState()
+//
+////                LaunchedEffect(Unit) {
+////                    viewModel.fetchBlockchainInfo()
+////                }
+//
+//                blockchainInfo?.let { info ->
+//                    Column(
+//                        modifier = Modifier.fillMaxSize().padding(16.dp),
+//                        verticalArrangement = Arrangement.Center,
+//                        horizontalAlignment = Alignment.CenterHorizontally
+//                    ) {
+//                        Text(text = "Chain: ${info.chain}")
+//                        Text(text = "Blocks: ${info.blocks}")
+//                        Text(text = "Headers: ${info.headers}")
+//                        // Display other fields as needed
+//                    }
 //                }
-
-                blockchainInfo?.let { info ->
-                    Column(
-                        modifier = Modifier.fillMaxSize().padding(16.dp),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(text = "Chain: ${info.chain}")
-                        Text(text = "Blocks: ${info.blocks}")
-                        Text(text = "Headers: ${info.headers}")
-                        // Display other fields as needed
-                    }
-                }
             }
         }
     }

@@ -72,6 +72,9 @@ dependencies {
    // implementation(libs.androidx.hilt.work)
     implementation(libs.androidx.core.ktx)
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
+    implementation (libs.ui)
+    implementation (libs.androidx.hilt.navigation.compose)
 
 
 }
