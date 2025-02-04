@@ -17,7 +17,12 @@ class RepositoryImpl @Inject constructor(private val apiService: ApiService): Re
 
             return withContext(Dispatchers.IO){
                 val response = apiService.getBitcoinInfo()
-                return@withContext response.body() ?: throw Exception("Error")
+                //return@withContext response.body() ?: throw Exception("Error")
+                if (response.isSuccessful) {
+                    response.body() ?: throw Exception("Error: Response body is null")
+                } else {
+                    throw Exception("Error: ${response.errorBody()?.string() ?: "Unknown error"}")
+                }
             }
 
     }
@@ -25,28 +30,48 @@ class RepositoryImpl @Inject constructor(private val apiService: ApiService): Re
     override suspend fun getBalance(address: String): BitcoinBalance {
         return withContext(Dispatchers.IO){
             val response = apiService.getBalance(address)
-            return@withContext response.body() ?: throw Exception("Error")
+            //return@withContext response.body() ?: throw Exception("Error")
+            if (response.isSuccessful) {
+                response.body() ?: throw Exception("Error: Response body is null")
+            } else {
+                throw Exception("Error: ${response.errorBody()?.string() ?: "Unknown error"}")
+            }
         }
     }
 
     override suspend fun getTransaction(hash: String): BitcoinTransaction {
         return withContext(Dispatchers.IO){
             val response = apiService.getTransaction(hash)
-            return@withContext response.body() ?: throw Exception("Error")
+            //return@withContext response.body() ?: throw Exception("Error")
+            if (response.isSuccessful) {
+                response.body() ?: throw Exception("Error: Response body is null")
+            } else {
+                throw Exception("Error: ${response.errorBody()?.string() ?: "Unknown error"}")
+            }
         }
     }
 
     override suspend fun getBlockHash(block: String): BlockHash {
         return withContext(Dispatchers.IO){
             val response = apiService.getBlockHash(block)
-            return@withContext response.body() ?: throw Exception("Error")
+            //return@withContext response.body() ?: throw Exception("Error")
+            if (response.isSuccessful) {
+                response.body() ?: throw Exception("Error: Response body is null")
+            } else {
+                throw Exception("Error: ${response.errorBody()?.string() ?: "Unknown error"}")
+            }
         }
     }
 
     override suspend fun getBlock(block: String): Block {
         return withContext(Dispatchers.IO){
             val response = apiService.getBlock(block)
-            return@withContext response.body() ?: throw Exception("Error")
+            //return@withContext response.body() ?: throw Exception("Error")
+            if (response.isSuccessful) {
+                response.body() ?: throw Exception("Error: Response body is null")
+            } else {
+                throw Exception("Error: ${response.errorBody()?.string() ?: "Unknown error"}")
+            }
         }
     }
 

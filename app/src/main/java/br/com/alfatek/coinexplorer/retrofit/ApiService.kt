@@ -16,8 +16,8 @@ interface ApiService {
     @GET("getblockchaininfo")
     suspend fun getBitcoinInfo(): Response<BlockchainInfo>
 
-    @GET("getbalance")
-    suspend fun getBalance(@Query("address") address: String): Response<BitcoinBalance>
+    @GET("get_balance")
+    suspend fun getBalance(@Query("wallet_name") name: String): Response<BitcoinBalance>
 
     @GET("gettransaction")
     suspend fun getTransaction(@Query("txid") hash: String): Response<BitcoinTransaction>
