@@ -20,34 +20,6 @@ fun BitcoinTransactionCard(transaction: BitcoinTransaction?) {
             modifier = Modifier.padding(16.dp)
         ) {
             TextField(
-                value = transaction?.bits ?: "N/A",
-                onValueChange = {},
-                label = { Text("Bits") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.chainwork ?: "N/A",
-                onValueChange = {},
-                label = { Text("Chainwork") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.confirmations?.toString() ?: "N/A",
-                onValueChange = {},
-                label = { Text("Confirmations") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.difficulty ?: "N/A",
-                onValueChange = {},
-                label = { Text("Difficulty") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
                 value = transaction?.hash ?: "N/A",
                 onValueChange = {},
                 label = { Text("Hash") },
@@ -55,51 +27,9 @@ fun BitcoinTransactionCard(transaction: BitcoinTransaction?) {
                 modifier = Modifier.fillMaxWidth()
             )
             TextField(
-                value = transaction?.height?.toString() ?: "N/A",
+                value = transaction?.locktime?.toString() ?: "N/A",
                 onValueChange = {},
-                label = { Text("Height") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.mediantime?.toString() ?: "N/A",
-                onValueChange = {},
-                label = { Text("Median Time") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.merkleroot ?: "N/A",
-                onValueChange = {},
-                label = { Text("Merkle Root") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.nTx?.toString() ?: "N/A",
-                onValueChange = {},
-                label = { Text("Number of Transactions") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.nextblockhash ?: "N/A",
-                onValueChange = {},
-                label = { Text("Next Block Hash") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.nonce?.toString() ?: "N/A",
-                onValueChange = {},
-                label = { Text("Nonce") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.previousblockhash ?: "N/A",
-                onValueChange = {},
-                label = { Text("Previous Block Hash") },
+                label = { Text("Locktime") },
                 readOnly = true,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -111,23 +41,9 @@ fun BitcoinTransactionCard(transaction: BitcoinTransaction?) {
                 modifier = Modifier.fillMaxWidth()
             )
             TextField(
-                value = transaction?.strippedsize?.toString() ?: "N/A",
+                value = transaction?.txid ?: "N/A",
                 onValueChange = {},
-                label = { Text("Stripped Size") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.time?.toString() ?: "N/A",
-                onValueChange = {},
-                label = { Text("Time") },
-                readOnly = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-            TextField(
-                value = transaction?.tx?.joinToString(", ") ?: "N/A",
-                onValueChange = {},
-                label = { Text("Transactions") },
+                label = { Text("Txid") },
                 readOnly = true,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -139,9 +55,23 @@ fun BitcoinTransactionCard(transaction: BitcoinTransaction?) {
                 modifier = Modifier.fillMaxWidth()
             )
             TextField(
-                value = transaction?.versionHex ?: "N/A",
+                value = transaction?.vin?.joinToString(", ") { it.coinbase } ?: "N/A",
                 onValueChange = {},
-                label = { Text("Version Hex") },
+                label = { Text("Vin Coinbase") },
+                readOnly = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            TextField(
+                value = transaction?.vout?.joinToString(", ") { it.value } ?: "N/A",
+                onValueChange = {},
+                label = { Text("Vout Value") },
+                readOnly = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            TextField(
+                value = transaction?.vsize?.toString() ?: "N/A",
+                onValueChange = {},
+                label = { Text("Vsize") },
                 readOnly = true,
                 modifier = Modifier.fillMaxWidth()
             )

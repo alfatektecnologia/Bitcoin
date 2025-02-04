@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -38,6 +39,7 @@ fun BlockChainInfoCard(blockChainInfo: BlockchainInfo?) {
                 modifier = Modifier
                     .padding(8.dp)
                     .fillMaxWidth()
+                    .selectable(selected = false, enabled = true, onClick = {  })
                     .background(color= Color.Red)
                     .border(width = 2.dp, color = Color.LightGray)
                 ,

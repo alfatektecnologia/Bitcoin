@@ -8,6 +8,7 @@ import br.com.alfatek.coinexplorer.retrofit.Repository
 import br.com.alfatek.coinexplorer.retrofit.model.BitcoinBalance
 import br.com.alfatek.coinexplorer.retrofit.model.BitcoinTransaction
 import br.com.alfatek.coinexplorer.retrofit.model.Block
+import br.com.alfatek.coinexplorer.retrofit.model.BlockHash
 import br.com.alfatek.coinexplorer.retrofit.model.BlockchainInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,6 +25,9 @@ class MainViewModel @Inject constructor (private val repository: Repository): Vi
 
     private val _transaction = MutableLiveData<BitcoinTransaction>()
     val transaction:LiveData<BitcoinTransaction> get() = _transaction
+
+    private val _blockHash = MutableLiveData<BlockHash>()
+    val blockHash:LiveData<BlockHash> get() = _blockHash
 
     private val _block = MutableLiveData<Block>()
     val block:LiveData<Block> get() = _block
@@ -43,6 +47,11 @@ class MainViewModel @Inject constructor (private val repository: Repository): Vi
     fun getTransaction(hash: String){
         viewModelScope.launch {
             _transaction.value = repository.getTransaction(hash)
+        }
+    }
+    fun getBlockHash(block: String){
+        viewModelScope.launch {
+            _blockHash.value = repository.getBlockHash(block)
         }
     }
     fun getBlock(block: String){
