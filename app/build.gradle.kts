@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "br.com.alfatek.coinexplorer"
-        minSdk = 24
+        minSdk = 31
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -76,5 +76,8 @@ dependencies {
     implementation (libs.ui)
     implementation (libs.androidx.hilt.navigation.compose)
 
+
+    //Splash Api
+    implementation (libs.androidx.core.splashscreen)
 
 }
