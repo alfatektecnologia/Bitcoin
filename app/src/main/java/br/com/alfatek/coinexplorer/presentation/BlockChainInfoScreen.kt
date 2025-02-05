@@ -45,10 +45,7 @@ fun BlockchainInfoScreen(viewModel: MainViewModel = hiltViewModel()) {
     val transactionState = remember { mutableStateOf(false) }
     val walletState = remember { mutableStateOf(false) }
     val searchType = remember { mutableStateOf("Block") }
-    var isBlockHash = false
-    var isBlock = false
-    var isTransaction = false
-    var isWallet  = false
+
     val texto = remember { mutableStateOf("N/A") }
     val search = remember { mutableStateOf("Info") }
     Column(
@@ -62,9 +59,9 @@ fun BlockchainInfoScreen(viewModel: MainViewModel = hiltViewModel()) {
         )
     {
 
-        Card(modifier = Modifier.padding(8.dp)) {
+        Card(modifier = Modifier.padding(8.dp).fillMaxWidth()) {
 
-            Column(Modifier.selectableGroup()) {
+            Column(Modifier.selectableGroup().padding(horizontal = 8.dp)) {
 
                     Row(
                         Modifier
@@ -143,7 +140,7 @@ fun BlockchainInfoScreen(viewModel: MainViewModel = hiltViewModel()) {
                         .fillMaxWidth()
                         .border(width = 2.dp, color = Color.Gray)
                         
-                        .padding(16.dp),
+                        .padding(horizontal = 16.dp),
                     onValueChange = { texto.value = it },
 
                     label = {
